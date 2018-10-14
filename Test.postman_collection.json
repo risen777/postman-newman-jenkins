@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "79aab163-bef8-4fbe-913e-b72ca0c2f467",
+		"_postman_id": "22b80606-baa4-47f6-86ff-3e9a8b4c8d31",
 		"name": "Test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -30,7 +30,7 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
+						"value": "application/json; charset=UTF-8",
 						"type": "text"
 					}
 				],
@@ -78,13 +78,61 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
+						"value": "application/json; charset=UTF-8",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"email\": \"peter@klaven\",\r\n    \"password\": \"cityslicka\"\r\n}"
+				},
+				"url": {
+					"raw": "https://reqres.in/api/login",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "testThird",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c4d1640-6544-4e98-ac6d-276d44aba3b5",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Missing\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"peter@klaven\"\r\n}"
 				},
 				"url": {
 					"raw": "https://reqres.in/api/login",
